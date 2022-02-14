@@ -39,10 +39,23 @@ const updatedProduct = async (id, newProduct) => {
 };
 
 
+const incrementProduct = async (id) => {
+  const db = await conn();
+   
+  await db.collection('lances').updateOne(
+    { _id: ObjectId(id) },
+    { $inc: { valor: 5 } }
+  );
+
+  return id;
+};
+
+
 
 module.exports = {
   getAllProducts,
   getProductBtId,
   createdProduct,
-  updatedProduct
+  updatedProduct,
+  incrementProduct,
 }

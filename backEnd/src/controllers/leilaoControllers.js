@@ -8,11 +8,13 @@ leilaoRouter.get('/', async (req, res) => {
 });
 
 leilaoRouter.post('/createProduct', async (req, res) => {
-  const { nome, usuarioComprador } = req.body;
+  const { nome, usuarioComprador, image } = req.body;
   const newProducts = {
     nome, 
     usuarioComprador,
-    createAt: new Date().toUTCString()
+    createAt: new Date().toUTCString(),
+    image,
+    valor: 0,
   }
   console.log(newProducts);
   const allProducts = await leilaoModels.createdProduct(newProducts);
